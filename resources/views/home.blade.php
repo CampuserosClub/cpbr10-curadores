@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <div class="alert alert-success text-center">
+                <b>Ajude nossa comunidade:</b> Participe das <a href="https://goo.gl/qXN20J">nossas palestras</a><br>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-heading text-center text-uppercase">
                     <b>Lista de inscritos na 3ª fase</b>
@@ -22,7 +25,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($atividades as $atividade)
-                                <tr class="bg-green">
+                                <tr>
                                     <th class="text-center">{{ $loop->iteration }}</th>
                                     <th class="text-center">{{ $atividade['subscribers'] }}</th>
                                     <th class="text-center">{{ $atividade['type'] }}</th>
