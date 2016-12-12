@@ -10,6 +10,11 @@ class HomeController extends Controller
 
     public function index()
     {
+        if (isset($_GET['update'])) {
+            Cache::flush();
+            return redirect()->route('home');
+        }
+        
         $this->atividades = collect($this->atividades);
 
         $urls = [

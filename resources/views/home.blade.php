@@ -10,6 +10,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading text-center text-uppercase">
                     <b>Lista de inscritos na 3ª fase</b>
+                    <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
                 </div>
 
                 <div class="panel-body">
