@@ -27,12 +27,12 @@
             <div class="container">
                 <div class="navbar-header">
                     <div class="text-center visible-xs">
-                        <a href="http://campuseirosclub.com/">
+                        <a href="http://campuseirosclub.com/" target="_blank">
                             <img src="https://i.imgur.com/au8IA6w.png" height="120px" />
                         </a>
                     </div>
                     <div class="hidden-xs">
-                        <a href="http://campuseirosclub.com/">
+                        <a href="http://campuseirosclub.com/" target="_blank">
                             <img src="https://i.imgur.com/au8IA6w.png" height="120px" />
                         </a>
                     </div>
@@ -66,7 +66,7 @@
                 <p>
                     <br />
                     Developed by <a href="https://twitter.com/jaonoctus" target="_blank">@jaonoctus</a> and <a href="https://www.facebook.com/LucasNicolauOliveira" class="alert-link" target="_blank">Lucas</a>
-                    <span class="hidden-xs">|</span><span class="visible-xs"><br /></span> Made with <i class="fa fa-heart-o"></i>. We are on <a href="https://github.com/CampuserosClub/vire-um-curador" class="alert-link">GitHub</a>
+                    <span class="hidden-xs">|</span><span class="visible-xs"><br /></span> Made with <i class="fa fa-heart-o"></i>. We are on <a href="https://github.com/CampuserosClub/vire-um-curador" class="alert-link" target="_blank">GitHub</a>
                 </p>
             </div>
         </footer>
