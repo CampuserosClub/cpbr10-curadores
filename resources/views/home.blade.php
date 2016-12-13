@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-success text-center">
+            {{-- <div class="alert alert-success text-center">
                 <b>Ajude nossa comunidade:</b> Participe das <a href="https://goo.gl/qXN20J">nossas palestras</a><br>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-md-4">
