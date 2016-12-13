@@ -35,22 +35,15 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a href="http://campuseirosclub.com/">
+                        <img src="http://campuseirosclub.com/wp-content/uploads/2015/12/logo-atualizado-horizontal.png" height="120px" />
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="https://github.com/CampuserosClub/vire-um-curador">Github</a></li>
-                    </ul>
+                    <span align="center">
+                        <h1>Vire um Curador<br /><small>Resultado</small></h1>
+                    </span>
                 </div>
             </div>
         </nav>
@@ -60,6 +53,7 @@
         <div class="navbar-fixed-bottom text-center text-muted">
             <div class="container-fluid badge alert-warning">
                 Developed by <a href="https://twitter.com/jaonoctus" target="_blank" class="alert-link">@jaonoctus</a>
+                | Made with <i class="fa fa-heart-o"></i>. We are on <a href="https://github.com/CampuserosClub/vire-um-curador" class="alert-link">GitHub</a>
             </div>
         </div>
     </div>

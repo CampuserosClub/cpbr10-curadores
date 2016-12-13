@@ -15,7 +15,7 @@
                             <b>Total de votos/inscritos</b>
                         </div>
                         <div class="panel-body text-center">
-                            <h1>{{ $sum_subscribers }}</h1>
+                            <h2>{{ $sum_subscribers }}</h2>
                             <br />
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <b>Total de atividades</b>
                         </div>
                         <div class="panel-body text-center">
-                            <h1>{{ $sum_activities }}</h1>
+                            <h2>{{ $sum_activities }}</h2>
                             <br />
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
                         </div>
                         <div class="panel-body text-center">
-                            <h1>{{ $last_sync->format('d/m/Y H:m:i') }}</h1>
+                            <h2>{{ $last_sync->format('d/m/Y H:m:i') }}</h2>
                             <small class="muted">timezone: America/Sao_Paulo</small>
                         </div>
                     </div>
