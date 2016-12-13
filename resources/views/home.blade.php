@@ -49,7 +49,7 @@
                             <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
                         </div>
                         <div class="panel-body text-center">
-                            <h2>{{ $last_sync->format('d/m/Y H:m:i') }}</h2>
+                            <h2>{{ $last_sync->format('d/m/Y H:i:s') }}</h2>
                             <small class="muted">timezone: America/Sao_Paulo</small>
                         </div>
                     </div>
