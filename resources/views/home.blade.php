@@ -36,7 +36,7 @@
                             <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
                         </div>
                         <div class="panel-body text-center">
-                            <h1>{{ $last_sync }}</h1>
+                            <h1>{{ $last_sync->format('d/m/Y H:m:i') }}</h1>
                         </div>
                     </div>
                 </div>
