@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Cache;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,11 @@ class HomeController extends Controller
             Cache::flush();
             return redirect()->route('home');
         }
-        
+
+        $last_sync = Cache::remember('last_sync', 30, function () {
+            return Carbon::now();
+        });
+
         $this->atividades = collect($this->atividades);
 
         $urls = [
@@ -66,7 +71,12 @@ class HomeController extends Controller
             }
         }
 
-        return view('home', ['atividades' => $this->atividades->sortByDesc('subscribers')]);
+        $data['atividades'] = $this->atividades->sortByDesc('subscribers');
+        $data['sum_subscribers'] = $this->atividades->sum('subscribers');
+        $data['sum_activities'] = $this->atividades->count();
+        $data['last_sync'] = $last_sync;
+
+        return view('home', $data);
     }
 
     protected function between($start, $end, $content)

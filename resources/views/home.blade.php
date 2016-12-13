@@ -7,10 +7,45 @@
             <div class="alert alert-success text-center">
                 <b>Ajude nossa comunidade:</b> Participe das <a href="https://goo.gl/qXN20J">nossas palestras</a><br>
             </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center text-uppercase">
+                            <b>Total de votos/inscritos</b>
+                        </div>
+                        <div class="panel-body text-center">
+                            <h1>{{ $sum_subscribers }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center text-uppercase">
+                            <b>Total de atividades</b>
+                        </div>
+                        <div class="panel-body text-center">
+                            <h1>{{ $sum_activities }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center text-uppercase">
+                            <b>última atualização</b>
+                            <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
+                        </div>
+                        <div class="panel-body text-center">
+                            <h1>{{ $last_sync }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="panel panel-default">
                 <div class="panel-heading text-center text-uppercase">
                     <b>Lista de inscritos na 3ª fase</b>
-                    <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
                 </div>
 
                 <div class="panel-body">

@@ -56,6 +56,12 @@
         </nav>
 
         @yield('content')
+
+        <div class="navbar-fixed-bottom text-center text-muted">
+            <div class="container-fluid badge alert-warning">
+                Developed by <a href="https://twitter.com/jaonoctus" target="_blank" class="alert-link">@jaonoctus</a>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
