@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Vire um curador #CPBR10</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -39,7 +39,7 @@
                 </div>
 
                 <span align="center">
-                    <h1>Vire um Curador<br /><small>Classificação</small></h1>
+                    <h1>Vire um curador<br /><small>#CPBR10</small></h1>
                 </span>
             </div>
         </nav>

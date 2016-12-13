@@ -58,7 +58,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading text-center text-uppercase">
-                    <b>Lista de inscritos na 3ª fase</b>
+                    <b>Classificação</b>
                 </div>
 
                 <div class="panel-body">
