@@ -52,7 +52,25 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="table-responsive">
+                    <div class="visible-xs">
+                        @foreach ($atividades as $atividade)
+                            <div>
+                                <p><h3 class="text-center">{{$loop->iteration}}º</h3></p>
+                                <p class="text-center small">
+                                    <a href="{{ $atividade['link'] }}" target="_blank">
+                                        {{ $atividade['title'] }}
+                                    </a>
+                                </p>
+                                <p class="text-center">
+                                    @foreach ($atividade['tags'] as $tag)
+                                        <span class="badge"><small>{{ $tag }}</small></span>
+                                    @endforeach
+                                </p>
+                                <hr />
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="table-responsive hidden-xs">
                         <table class="table table-bordered">
                             <thead>
                                 <tr class="active">
@@ -67,7 +85,7 @@
                                 <tr>
                                     <th class="text-center" style="vertical-align: middle;">{{ $loop->iteration }}º</th>
                                     <th class="text-center" style="vertical-align: middle;">{{ $atividade['subscribers'] }}</th>
-                                    <th class="text-center"  style="vertical-align: middle;">
+                                    <th class="text-center" style="vertical-align: middle;">
                                         <a href="{{ $atividade['link'] }}" target="_blank">
                                             {{ $atividade['title'] }}
                                         </a>

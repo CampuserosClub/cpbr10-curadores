@@ -26,25 +26,21 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <a href="http://campuseirosclub.com/">
-                        <img src="https://i.imgur.com/au8IA6w.png" height="120px" />
-                    </a>
+                    <div class="text-center visible-xs">
+                        <a href="http://campuseirosclub.com/">
+                            <img src="https://i.imgur.com/au8IA6w.png" height="120px" />
+                        </a>
+                    </div>
+                    <div class="hidden-xs">
+                        <a href="http://campuseirosclub.com/">
+                            <img src="https://i.imgur.com/au8IA6w.png" height="120px" />
+                        </a>
+                    </div>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <span align="center">
-                        <h1>Vire um Curador<br /><small>Resultado</small></h1>
-                    </span>
-                </div>
+                <span align="center">
+                    <h1>Vire um Curador<br /><small>Resultado</small></h1>
+                </span>
             </div>
         </nav>
 
