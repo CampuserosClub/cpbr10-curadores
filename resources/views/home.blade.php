@@ -8,6 +8,17 @@
                 <b>Ajude nossa comunidade:</b> Participe das <a href="https://goo.gl/qXN20J">nossas palestras</a><br>
             </div> --}}
 
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- vire-um-curador.campuseros.club -->
+            <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6934296242213124"
+            data-ad-slot="1378210491"
+            data-ad-format="auto"></ins><br />
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="panel panel-default">
@@ -44,7 +55,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="panel panel-default">
                 <div class="panel-heading text-center text-uppercase">

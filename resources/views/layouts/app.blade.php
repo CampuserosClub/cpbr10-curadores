@@ -39,19 +39,37 @@
                 </div>
 
                 <span align="center">
-                    <h1>Vire um Curador<br /><small>Resultado</small></h1>
+                    <h1>Vire um Curador<br /><small>Classificação</small></h1>
                 </span>
             </div>
         </nav>
 
         @yield('content')
 
-        <div class="navbar-fixed-bottom text-center text-muted">
-            <div class="container-fluid badge alert-warning">
-                Developed by <a href="https://twitter.com/jaonoctus" target="_blank" class="alert-link">@jaonoctus</a> and <a href="https://www.facebook.com/LucasNicolauOliveira" class="alert-link" target="_blank">Lucas</a>
-                | Made with <i class="fa fa-heart-o"></i>. We are on <a href="https://github.com/CampuserosClub/vire-um-curador" class="alert-link">GitHub</a>
+        <style>
+        footer {
+            background: #eee;
+            color: #333;
+        }
+        footer a {
+            color: #333;
+            font-weight: bold;
+        }
+
+        footer .adsense {
+            min-height: 5px;
+            /*min-width: 300px;*/
+        }
+        </style>
+        <footer class="navbar-fixed-bottom text-center small">
+            <div class="container">
+                <p>
+                    <br />
+                    Developed by <a href="https://twitter.com/jaonoctus" target="_blank">@jaonoctus</a> and <a href="https://www.facebook.com/LucasNicolauOliveira" class="alert-link" target="_blank">Lucas</a>
+                    <span class="hidden-xs">|</span><span class="visible-xs"><br /></span> Made with <i class="fa fa-heart-o"></i>. We are on <a href="https://github.com/CampuserosClub/vire-um-curador" class="alert-link">GitHub</a>
+                </p>
             </div>
-        </div>
+        </footer>
     </div>
 
     <!-- Scripts -->
