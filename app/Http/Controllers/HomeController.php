@@ -9,6 +9,14 @@ class HomeController extends Controller
 {
     protected $atividades = [];
 
+    /**
+     * Time to store info in cache
+     * 2 hours
+     *
+     * @var int
+     */
+    protected $cache_time = 60 * 2;
+
     public function index()
     {
         if (isset($_GET['update'])) {
@@ -16,7 +24,7 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
 
-        $last_sync = Cache::remember('last_sync', 30, function () {
+        $last_sync = Cache::remember('last_sync', $this->cache_time, function () {
             return Carbon::now();
         });
 
@@ -31,7 +39,7 @@ class HomeController extends Controller
             $times = ($key == 'workshop') ? 2 : 9;
 
             for ($page = 1; $page <= $times; $page++) {
-                $cache = Cache::remember($key.$page, 30, function () use ($url, $page) {
+                $cache = Cache::remember($key.$page, $this->cache_time, function () use ($url, $page) {
                     return file_get_contents($url.'?page='.$page);
                 });
 
