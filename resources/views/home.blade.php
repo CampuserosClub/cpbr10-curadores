@@ -16,6 +16,7 @@
                         </div>
                         <div class="panel-body text-center">
                             <h1>{{ $sum_subscribers }}</h1>
+                            <br />
                         </div>
                     </div>
                 </div>
@@ -26,6 +27,7 @@
                         </div>
                         <div class="panel-body text-center">
                             <h1>{{ $sum_activities }}</h1>
+                            <br />
                         </div>
                     </div>
                 </div>
@@ -37,6 +39,7 @@
                         </div>
                         <div class="panel-body text-center">
                             <h1>{{ $last_sync->format('d/m/Y H:m:i') }}</h1>
+                            <small class="muted">timezone: America/Sao_Paulo</small>
                         </div>
                     </div>
                 </div>
