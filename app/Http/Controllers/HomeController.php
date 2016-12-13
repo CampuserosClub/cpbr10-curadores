@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     /**
      * Time to store info in cache
-     * 2 hours
+     * 2 hours.
      *
      * @var int
      */
@@ -21,6 +21,7 @@ class HomeController extends Controller
     {
         if (isset($_GET['update'])) {
             Cache::flush();
+
             return redirect()->route('home');
         }
 
@@ -32,7 +33,7 @@ class HomeController extends Controller
 
         $urls = [
             'workshop' => 'http://campuse.ro/events/vire-um-curador-na-cpbr10-votos/workshop',
-            'talk' => 'http://campuse.ro/events/vire-um-curador-na-cpbr10-votos/talk',
+            'talk'     => 'http://campuse.ro/events/vire-um-curador-na-cpbr10-votos/talk',
         ];
 
         foreach ($urls as $key => $url) {
@@ -50,7 +51,6 @@ class HomeController extends Controller
 
                 foreach ($all as $k => $single) {
                     if ($k != 0) {
-
                         $content_tags = $this->between('<div class="large-2 text-right columns">', '</div></div>', $single);
                         $content_tags_div = '<div class="text-right activity-tag">';
                         $content_tags_dirty = explode($content_tags_div, $content_tags);
@@ -62,7 +62,7 @@ class HomeController extends Controller
                             $tags->push($tag);
                         }
 
-                        $link = 'http://campuse.ro' . $this->between('<strong><a href="', '">', $single);
+                        $link = 'http://campuse.ro'.$this->between('<strong><a href="', '">', $single);
 
                         $title = explode('">', $single)[3];
                         $title = explode('</a>', $title)[0];
@@ -77,11 +77,11 @@ class HomeController extends Controller
                         // $author = $this->between('<meta name="author" content="', '">', $cache_atividade);
 
                         $atividade = [
-                            'link' => $link,
-                            'title' => $title,
+                            'link'        => $link,
+                            'title'       => $title,
                             'subscribers' => $subscribers,
-                            'type' => $key,
-                            'tags' => $tags,
+                            'type'        => $key,
+                            'tags'        => $tags,
                             // 'author' => $author,
                         ];
 
