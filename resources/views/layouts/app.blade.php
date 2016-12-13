@@ -36,7 +36,7 @@
                     </button>
 
                     <a href="http://campuseirosclub.com/">
-                        <img src="http://campuseirosclub.com/wp-content/uploads/2015/12/logo-atualizado-horizontal.png" height="120px" />
+                        <img src="https://i.imgur.com/au8IA6w.png" height="120px" />
                     </a>
                 </div>
 
