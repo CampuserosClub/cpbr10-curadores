@@ -58,20 +58,24 @@
                                 <tr class="active">
                                     <th class="text-center text-uppercase" width="5%">Posição</th>
                                     <th class="text-center text-uppercase" width="5%">Inscritos</th>
-                                    <th class="text-center text-uppercase" width="5%">Tipo</th>
                                     <th class="text-center text-uppercase" width="45%">Título</th>
+                                    <th class="text-center text-uppercase" width="20%">Tags</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($atividades as $atividade)
                                 <tr>
-                                    <th class="text-center">{{ $loop->iteration }}</th>
-                                    <th class="text-center">{{ $atividade['subscribers'] }}</th>
-                                    <th class="text-center">{{ $atividade['type'] }}</th>
-                                    <th class="text-center">
+                                    <th class="text-center" style="vertical-align: middle;">{{ $loop->iteration }}º</th>
+                                    <th class="text-center" style="vertical-align: middle;">{{ $atividade['subscribers'] }}</th>
+                                    <th class="text-center"  style="vertical-align: middle;">
                                         <a href="{{ $atividade['link'] }}" target="_blank">
                                             {{ $atividade['title'] }}
                                         </a>
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        @foreach ($atividade['tags'] as $tag)
+                                            <span class="badge">{{ $tag }}</span>
+                                        @endforeach
                                     </th>
                                 </tr>
                                 @endforeach

@@ -43,6 +43,17 @@ class HomeController extends Controller
                 foreach ($all as $k => $single) {
                     if ($k != 0) {
 
+                        $content_tags = $this->between('<div class="large-2 text-right columns">', '</div></div>', $single);
+                        $content_tags_div = '<div class="text-right activity-tag">';
+                        $content_tags_dirty = explode($content_tags_div, $content_tags);
+                        $tags_num = collect($content_tags_dirty)->count() - 1;
+                        $tags = collect([]);
+                        for ($i = 1; $i <= $tags_num; $i++) {
+                            $tag = str_replace('</div>', '', $content_tags_dirty[$i]);
+                            $tag = str_replace("\n", '', $tag);
+                            $tags->push($tag);
+                        }
+
                         $link = 'http://campuse.ro' . $this->between('<strong><a href="', '">', $single);
 
                         $title = explode('">', $single)[3];
@@ -62,6 +73,7 @@ class HomeController extends Controller
                             'title' => $title,
                             'subscribers' => $subscribers,
                             'type' => $key,
+                            'tags' => $tags,
                             // 'author' => $author,
                         ];
 
