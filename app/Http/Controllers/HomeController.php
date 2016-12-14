@@ -36,38 +36,63 @@ class HomeController extends Controller
             'talk'     => 'http://campuse.ro/events/vire-um-curador-na-cpbr10-votos/talk',
         ];
 
-        foreach ($urls as $key => $url) {
-            $times = ($key == 'workshop') ? 2 : 9;
+        $all_tags = collect([]);
 
-            for ($page = 1; $page <= $times; $page++) {
-                $cache = Cache::remember($key.$page, $this->cache_time, function () use ($url, $page) {
-                    return file_get_contents($url.'?page='.$page);
-                });
+        if (!Cache::has('atividades')) {
+            foreach ($urls as $key => $url) {
+                $times = ($key == 'workshop') ? 2 : 9;
 
-                $contents = explode('profile-activities-panel', $cache)[2];
-                $list = explode('events-list', $contents)[1];
-                $xablau1 = explode('row collapse table-header light-theme', $list)[1];
-                $all = collect(explode('row collapse table-body light-theme', $xablau1));
+                for ($page = 1; $page <= $times; $page++) {
+                    $campusero_page = file_get_contents($url.'?page='.$page);
 
-                foreach ($all as $k => $single) {
-                    if ($k != 0) {
-                        $content_tags = $this->between('<div class="large-2 text-right columns">', '</div></div>', $single);
-                        $content_tags_div = '<div class="text-right activity-tag">';
-                        $content_tags_dirty = explode($content_tags_div, $content_tags);
-                        $tags_num = collect($content_tags_dirty)->count() - 1;
-                        $tags = collect([]);
-                        for ($i = 1; $i <= $tags_num; $i++) {
-                            $tag = str_replace('</div>', '', $content_tags_dirty[$i]);
-                            $tag = str_replace("\n", '', $tag);
-                            $tags->push($tag);
-                        }
+                    $contents = explode('profile-activities-panel', $campusero_page)[2];
+                    $list = explode('events-list', $contents)[1];
+                    $xablau1 = explode('row collapse table-header light-theme', $list)[1];
+                    $all = collect(explode('row collapse table-body light-theme', $xablau1));
 
-                        $link = 'http://campuse.ro'.$this->between('<strong><a href="', '">', $single);
+                    foreach ($all as $k => $single) {
+                        if ($k != 0) {
+                            $content_tags = $this->between('<div class="large-2 text-right columns">', '</div></div>', $single);
+                            $content_tags_div = '<div class="text-right activity-tag">';
+                            $content_tags_dirty = explode($content_tags_div, $content_tags);
+                            $tags_num = collect($content_tags_dirty)->count() - 1;
+                            $tags = collect([]);
+                            for ($i = 1; $i <= $tags_num; $i++) {
+                                $tag = str_replace('</div>', '', $content_tags_dirty[$i]);
+                                $tag = str_replace("\n", '', $tag);
+                                $slug = str_slug($tag);
+                                $tags->put($slug, $tag);
 
-                        $title = explode('">', $single)[3];
-                        $title = explode('</a>', $title)[0];
+                                if (!$all_tags->has($slug)) {
+                                    $all_tags->put($slug, [
+                                    'name'   => $tag,
+                                    'amount' => 1,
+                                ]);
+                                } else {
+                                    if (!Cache::has('all_tags')) {
+                                        $all_tags->transform(function ($item, $key) use ($slug) {
+                                            if ($key == $slug) {
+                                                $amount = $item['amount'];
+                                                $amount++;
 
-                        $subscribers = $this->between('<span class="attendees right">', '</span>', $single);
+                                                $collection = collect($item)->forget('amount');
+                                                $collection->put('amount', $amount);
+
+                                                return $collection->toArray();
+                                            }
+
+                                            return $item;
+                                        });
+                                    }
+                                }
+                            }
+
+                            $link = 'http://campuse.ro'.$this->between('<strong><a href="', '">', $single);
+
+                            $title = explode('">', $single)[3];
+                            $title = explode('</a>', $title)[0];
+
+                            $subscribers = $this->between('<span class="attendees right">', '</span>', $single);
 
                         // $slug = str_slug($title);
                         // $cache_atividade = Cache::remember($slug, 30, function () use ($link) {
@@ -85,16 +110,49 @@ class HomeController extends Controller
                             // 'author' => $author,
                         ];
 
-                        $this->atividades->push($atividade);
+                            $this->atividades->push($atividade);
+                        }
                     }
                 }
             }
         }
 
-        $data['atividades'] = $this->atividades->sortByDesc('subscribers');
-        $data['sum_subscribers'] = $this->atividades->sum('subscribers');
-        $data['sum_activities'] = $this->atividades->count();
+        $all_tags = Cache::remember('all_tags', $this->cache_time, function () use ($all_tags) {
+            return $all_tags;
+        });
+
+        $filter_tag = (isset($_GET['tag'])) ? $_GET['tag'] : null;
+
+        $atividades = $this->atividades;
+        $atividades = Cache::remember('atividades', $this->cache_time, function () use ($atividades) {
+            return $this->atividades->sortByDesc('subscribers');
+        });
+
+        $i = 0;
+        $atividades->transform(function ($item, $key) use ($i) {
+            $this->i = (isset($this->i)) ? $this->i : $i;
+            $this->i++;
+            $item['position'] = $this->i;
+
+            return $item;
+        });
+
+        if (!is_null($filter_tag)) {
+            $atividades = $atividades->filter(function ($value, $key) use ($filter_tag) {
+                return $value['tags']->has($filter_tag);
+            });
+        }
+
+        $data['atividades'] = $atividades;
+        $data['sum_subscribers'] = Cache::remember('sum_subscribers', $this->cache_time, function () use ($atividades) {
+            return $atividades->sum('subscribers');
+        });
+        $data['sum_activities'] = Cache::remember('sum_activities', $this->cache_time, function () use ($atividades) {
+            return $atividades->count();
+        });
         $data['last_sync'] = $last_sync;
+        $data['all_tags'] = $all_tags->sort();
+        $data['filter_tag'] = $filter_tag;
 
         return view('home', $data);
     }

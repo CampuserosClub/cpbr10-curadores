@@ -55,63 +55,83 @@
                     </div>
                 </div>
             </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading text-center text-uppercase">
-                    <b>Classificação</b>
-                </div>
-
-                <div class="panel-body">
-                    <div class="visible-xs">
-                        @foreach ($atividades as $atividade)
-                            <div>
-                                <p><h3 class="text-center">{{$loop->iteration}}º</h3></p>
-                                <p class="text-center small">
-                                    <a href="{{ $atividade['link'] }}" target="_blank">
-                                        {{ $atividade['title'] }}
-                                    </a>
-                                </p>
-                                <p class="text-center">
-                                    @foreach ($atividade['tags'] as $tag)
-                                        <span class="badge"><small>{{ $tag }}</small></span>
-                                    @endforeach
-                                </p>
-                                <hr />
-                            </div>
-                        @endforeach
+            <div class="row">
+                <div class="col-md-3 hidden-xs">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center text-uppercase">
+                            <b>Filtre por tags</b>
+                        </div>
+                        <div class="list-group">
+                            @foreach ($all_tags as $slug => $tag)
+                                <?php $active = ($filter_tag == $slug); ?>
+                                <a class="list-group-item small {{ $active ? 'active' : '' }}" href="{{ $active ? '/' : "?tag=$slug" }}">
+                                    {{ $tag['name'] }}
+                                    <span class="pull-right badge">{{$tag['amount']}}</span>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
-                    <div class="table-responsive hidden-xs">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr class="active">
-                                    <th class="text-center text-uppercase" width="5%">Posição</th>
-                                    <th class="text-center text-uppercase" width="5%">Inscritos</th>
-                                    <th class="text-center text-uppercase" width="45%">Título</th>
-                                    <th class="text-center text-uppercase" width="20%">Tags</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                </div>
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center text-uppercase">
+                            <b>Classificação</b>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="visible-xs">
                                 @foreach ($atividades as $atividade)
-                                <tr>
-                                    <th class="text-center" style="vertical-align: middle;">{{ $loop->iteration }}º</th>
-                                    <th class="text-center" style="vertical-align: middle;">{{ $atividade['subscribers'] }}</th>
-                                    <th class="text-center" style="vertical-align: middle;">
-                                        <a href="{{ $atividade['link'] }}" target="_blank">
-                                            {{ $atividade['title'] }}
-                                        </a>
-                                    </th>
-                                    <th class="text-center" style="vertical-align: middle;">
-                                        @foreach ($atividade['tags'] as $tag)
-                                            <span class="badge">{{ $tag }}</span>
-                                        @endforeach
-                                    </th>
-                                </tr>
+                                    <div>
+                                        <p><h3 class="text-center">{{ $atividade['position'] }}º <br /><small>{{ $atividade['subscribers'] }} inscritos</small></h3></p>
+                                        <p class="text-center small">
+                                            <a href="{{ $atividade['link'] }}" target="_blank">
+                                                {{ $atividade['title'] }}
+                                            </a>
+                                        </p>
+                                        <p class="text-center">
+                                            @foreach ($atividade['tags'] as $tag)
+                                                <span class="badge"><small>{{ $tag }}</small></span>
+                                            @endforeach
+                                        </p>
+                                        <hr />
+                                    </div>
                                 @endforeach
-                            </tbody>
-                        </table>
+                            </div>
+                            <div class="table-responsive hidden-xs">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="active">
+                                            <th class="text-center text-uppercase" width="5%">Posição</th>
+                                            <th class="text-center text-uppercase" width="5%">Inscritos</th>
+                                            <th class="text-center text-uppercase" width="45%">Título</th>
+                                            <th class="text-center text-uppercase" width="20%">Tags</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($atividades as $atividade)
+                                        <tr>
+                                            <th class="text-center" style="vertical-align: middle;">{{ $atividade['position'] }}º</th>
+                                            <th class="text-center" style="vertical-align: middle;">{{ $atividade['subscribers'] }}</th>
+                                            <th class="text-center" style="vertical-align: middle;">
+                                                <a href="{{ $atividade['link'] }}" target="_blank">
+                                                    {{ $atividade['title'] }}
+                                                </a>
+                                            </th>
+                                            <th class="text-center" style="vertical-align: middle;">
+                                                @foreach ($atividade['tags'] as $tag)
+                                                    <span class="badge">{{ $tag }}</span>
+                                                @endforeach
+                                            </th>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
