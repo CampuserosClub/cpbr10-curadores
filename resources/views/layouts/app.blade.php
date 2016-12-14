@@ -66,7 +66,9 @@
                 <p>
                     <br />
                     Developed by <a href="https://twitter.com/jaonoctus" target="_blank">@jaonoctus</a> and <a href="https://www.facebook.com/LucasNicolauOliveira" class="alert-link" target="_blank">Lucas</a>
-                    <span class="hidden-xs">|</span><span class="visible-xs"><br /></span> Made with <i class="fa fa-heart-o"></i>. We are on <a href="https://github.com/CampuserosClub/vire-um-curador" class="alert-link" target="_blank">GitHub</a>
+                    <span class="hidden-xs">|</span><span class="visible-xs"><br /></span>
+                    Made with <i class="fa fa-heart-o"></i>.
+                    We are on <a href="https://github.com/CampuserosClub/cpbr10-curadores" class="alert-link" target="_blank">GitHub</a>
                 </p>
             </div>
         </footer>
