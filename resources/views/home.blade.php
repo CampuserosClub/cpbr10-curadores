@@ -20,7 +20,7 @@
             </script>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading text-center text-uppercase">
                             <b>Total de votos/inscritos</b>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading text-center text-uppercase">
                             <b>Total de atividades</b>
@@ -42,14 +42,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center text-uppercase">
+                            <b>Nota de corte</b>
+                        </div>
+                        <div class="panel-body text-center">
+                            <h2>{{ $passing_score }}</h2>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading text-center text-uppercase">
                             <b>última atualização</b>
                             <span class="pull-right"><a href="?update=true" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i></a></span>
                         </div>
                         <div class="panel-body text-center">
-                            <h2>{{ $last_sync->format('d/m/Y H:i:s') }}</h2>
+                            <h3>{{ $last_sync->format('d/m/Y H:i:s') }}</h3>
                             <small class="muted">timezone: America/Sao_Paulo</small>
                         </div>
                     </div>

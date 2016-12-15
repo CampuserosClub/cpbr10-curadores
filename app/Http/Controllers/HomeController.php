@@ -183,6 +183,11 @@ class HomeController extends Controller
             return $atividades;
         });
 
+        // Number of subscribers from 50º position.
+        $passing_score = $atividades->filter(function ($value, $key) {
+            return $value['position'] == 50;
+        })->first()['subscribers'];
+
         // If have to filter by tag.
         if (!is_null($filter_tag)) {
             // Return only Activities have the tag.
@@ -202,6 +207,7 @@ class HomeController extends Controller
         $data['last_sync'] = $last_sync;
         $data['all_tags'] = $all_tags->sort();
         $data['filter_tag'] = $filter_tag;
+        $data['passing_score'] = $passing_score;
 
         // Show the view.
         return view('home', $data);
